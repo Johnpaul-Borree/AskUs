@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Racing+Sans+One|Sofia|Ubuntu+Condensed');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    font-family: "Ubuntu Condensed", sans-serif;
+    font-size: 16px;
+    background: #eee;
+}
+.header{
+    min-width: 100%;
+    height: 8vh;
+    text-align: center
+}
+.header > h2{
+    padding-top: 2px;
+}
+.header > h2 a{
+    text-decoration: none;
+    font-family: "Racing Sans One", serif;
+    font-size: 1.4em;
+    color: #2b3856;
+}
+.header > h2 a > i{
+    font-family: "Sofia", sans-serif;
+    font-size: 22px;
+    
+}
+.content{
+    min-width: 100%;
+    height: 70vh;
+    background: url("../Images/jeremy.jpg");
+    background-size: cover;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.info{
+    min-width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    /* border-bottom: 1px solid #333; */
+}
+footer{
+    min-width: 100%;
+    font-size: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+footer > p{
+    padding-top: 20px;
+}
