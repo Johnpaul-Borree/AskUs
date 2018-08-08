@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Sofia');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 150vh;
+}
+body{
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: #222;
+}
+.header{
+    min-width: 100%;
+    height: 8vh;
+    text-align: center
+}
+.header > h2{
+    padding-top: 2px;
+}
+.header > h2 a{
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-size: 1.4em;
+    color: #3bb9ff;
+}
+.header > h2 a > i{
+    font-family: "Sofia", sans-serif;
+    font-size: 22px;
+    
+}
+.content{
+    min-width: 100%;
+    max-width: 100%;
+    height: 70vh;
+    background: url("../Images/landings.png");
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.info{
+    margin-top: 3%;
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+.info > p{
+    width: 80%;
+    line-height: 25px;
+}
+button{
+    width: 300px;
+    min-width: 300px;
+    background: #fff;
+    margin: 10px auto 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    color: #3bb9ff;
+}
+button:focus{
+    border: none;
+}
+button.login{
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    margin-top: 10px;
+}
+footer{
+    margin-top: auto;
+    margin-bottom: 5%;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+footer > p{
+    padding-top: 20px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    body{
+        font-size: 14px;
+    }
+    button{
+        width: 250px;
+        min-width: 250px;
+    }
+    .info > p{
+        width: 90%;
+    }
+    footer{
+        font-size: 12px;
+    }
+}
