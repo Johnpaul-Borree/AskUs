@@ -594,6 +594,10 @@ img {
 }
 
 @media only screen and (max-width: 650px) {
+
+    .profile-details:after {
+        top: 250px;
+    }
     .navbarcontainer > .search-box {
         margin-left: 15%;
     }

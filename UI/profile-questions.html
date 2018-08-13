@@ -4,7 +4,7 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="CSS/style.css" rel="stylesheet">
+        <link href="CSS/home.css" rel="stylesheet">
         <link rel="stylesheet" href="CSS/profile.css">
     </head>
     <body>
@@ -17,7 +17,6 @@
                         <form role="form">
                                 <input type="search" name="search" placeholder="Search...">
                         </form>
-                        <i class="fas fa-search"></i>
                     </div>
                 <img src="Images/icon-menu.svg" alt="menu" class="menu-toggle">
                 <ul class="navbar" data-mode="close">
@@ -36,9 +35,9 @@
                     </li>
                     <li>
                         <a href="profile.html" data-tab="photo">
-                            <div class="photo-container">
-                                <img src="#" alt="Profile">
-                            </div>
+                                <div class="photo-container">
+                                        <img src="Images/user1.jpeg" alt="Profile">
+                                </div>
                         </a>
                     </li>
                     <li><a href="#0" class="ask-button">Ask Question</a></li>
@@ -46,7 +45,9 @@
             </div>
             <div class="content-container">
                 <div class="profile-details">
-                        <img src="me.jpg" alt="me" class="profile-pix">
+                        <div class="photo-container">
+                            <img src="Images/user1.jpeg" alt="Profile">
+                        </div>
                         <div class="description">
                             <h2>My Name</h2>
                             <p>Full Stack Computer Programmer Lagos Nigeria</p>
@@ -79,8 +80,10 @@
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur hic qui sed laudantium ipsam voluptatum, 
                                 aperiam soluta temporibus officiis, ullam fugiat sint quos, commodi architecto omnis recusandae harum nihil?</p>
                         </a>
-                            <img src="user1.jpg" alt="user1">
-                            <span class="user-details">Fullname,description</span>
+                        <div class="profile-container">
+                                <img src="Images/user.jpg" alt="profile"> &nbsp;
+                                <span class="user-details">Fullname,description</span>
+                        </div>
                             <a href="answers.html" target="_blank"><span class="question-answer-number">400 Answers</span></a>
                             <span class="question-time">1hour ago</span>
                             <span class="question-views-number">12 views</span>
@@ -92,15 +95,19 @@
                                 <span class="more">(more)</span>
                             </p>
                         </a>
-                            <img src="answerer.jpg" alt="answerer">
-                            <span class="answer-details">Fullname, Description</span>
+                        <div class="profile-container">
+                                <img src="Images/user2.jpeg" alt="profile">
+                                <span class="answer-details">Fullname, Description</span>
+                        </div>
                             <span class="answer-time">1hour ago</span>
                             <span class="answer-views-number">12 views</span>
                             <span class="upvote">Upvotes</span>
                             <span class="downvote">downvotes</span><br>
     
                             <div class="my-comment">
-                                <img src="me.jpg" alt="me" class="comment-me">
+                                    <div class="profile-container">
+                                        <img src="Images/user1.jpeg" alt="profile">
+                                    </div>
                                 <div class="comment-box">
                                     <form role="form">
                                         <input type="text" name="search" placeholder="Add comment ...">
@@ -120,8 +127,10 @@
                                 aliquid corporis vero exercitationem cupiditate. Qui, fugit odit. Quae facere nostrum repellat hic quibusdam!
                             </p>
                         </a>
-                        <img src="user1.jpg" alt="user1">
-                        <span class="user-details">Fullname,description</span>
+                        <div class="profile-container">
+                                <img src="Images/user3.jpg" alt="profile">&nbsp;
+                                <span class="user-details">Fullname,description</span>
+                        </div>
                         <a href="answers.html" target="_blank"><span class="question-answer-number">4 Answers</span></a>
                         <span class="question-time">1hour ago</span>
                         <span class="question-views-number">12 views</span>
