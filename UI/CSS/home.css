@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+  
+body {
+    font-size: 1.6rem;
+    font-family: "PT Sans", sans-serif;
+    color: #505260;
+    background-color: #fafafa;
+}
+
+ul {
+    list-style: none;
+}
+  
+a {
+    color: #222;
+    text-decoration: none;
+}
+  
+img {
+    max-width: 100%;
+    
+}
+
+.navbarcontainer {
+    position: fixed;
+    background: #073953;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    border-bottom: none;
+    z-index: 3;
+}
+
+.navbarcontainer::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  
+.navbarcontainer .heading {
+    float: left;
+    margin: 4px 0 0 3%;
+}
+
+.navbarcontainer .heading > h2 a {
+    font-family: "Playfair Display", serif;
+    font-size: 1.4em;
+    color: #3bb9ff;
+}
+
+.navbarcontainer .heading > h2 a > i {
+    font-family: "Sofia", sans-serif;
+    font-size: 22px;
+    
+}
+
+.navbarcontainer > ul{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    flex-basis: 100%;
+    display: flex;
+    background-color: #3bb9ff;
+    flex-direction: column ;
+    transition: all 1s ease;
+}
+.navbarcontainer > ul > li{
+    padding: 30px 10px 10px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.navbarcontainer > ul > li:last-child{
+    border-bottom: none;
+}
+
+.navbarcontainer > ul > li > a:hover,
+.navbarcontainer > ul > li >a.current {
+    color: #d2d8d8;
+}
+
+.navbarcontainer > .search-box {
+    margin-left: 40%;
+    width: 200px;
+    padding-top: 7px;
+}
+.navbarcontainer > .search-box > form > input{
+    border-radius: 0.25em;
+    width: 100%;
+    padding: 10px 15px 10px 10px;
+    border: 1px solid #d2d8d8;
+    appearance: none;
+}
+.navbarcontainer > .menu-toggle {
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.navbarcontainer > ul[data-mode=close] {
+    display: none;
+}
+
+.navbarcontainer > ul[data-mode=open] {
+    display: inherit;
+    transition: all 1s ease;
+}
+
+.navbarcontainer > ul > li > a > .answer-count,
+.navbarcontainer > ul > li > a > .Question-count {
+    position: absolute;
+    margin-top: -33px;
+    margin-left: 50px;
+    font-size: 11px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0px 5px;
+    background: #e04b4a;
+    color: #FFF;
+    border-radius: 3px;
+}
+
+.navbarcontainer > .breadcrumb{
+    position: absolute;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #e8e8e8;
+    margin-bottom: 10px;
+    padding: 6px 15px 7px;
+}
+
+.navbarcontainer > .breadcrumb.close{
+    display: none;
+}
+
+.navbarcontainer > .breadcrumb > div:nth-child(1){
+    padding-right: 20px;
+}
+.navbarcontainer > .breadcrumb > div > a {
+    font-size: 14px;
+    line-height: 12px;
+    color: #4d5669;
+}
+
+.navbarcontainer > .breadcrumb > div > a:hover,
+.navbarcontainer > .breadcrumb > div > a.current {
+    color: #3bb9ff;
+}
+
