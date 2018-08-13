@@ -18,3 +18,33 @@ menu.addEventListener('click', (event)=>{
 toggleNav('.navbarcontainer > .breadcrumb','.navbarcontainer > ul','close','open');
 event.preventDefault();
 });
+
+
+//Create Question modal
+
+const modalBox = document.querySelector('.post-question-modal');
+const trigger = document.querySelector('.ask-button');
+const close = document.querySelector('.close-button');
+
+function toggleModal() {
+    modalBox.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modalBox) {
+        toggleModal();
+    }
+}
+
+function redirect() {
+    window.location = 'delete.html';
+}
+
+document.querySelector('.ask-question-input').addEventListener('submit', function(evt){
+    evt.preventDefault();
+    redirect();
+});
+
+trigger.addEventListener("click", toggleModal);
+close.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
