@@ -193,6 +193,21 @@ img {
     color: #999;
     margin-left: -10px;
 }
+
+.content-container > .ask-question > a > .profile-container {
+    width: 50%;
+    margin: 0px 0px 10px;
+    text-align: center;
+    margin-left: -10%;
+}
+
+.content-container > .ask-question > a > .profile-container img {
+    width: 100px;
+    height: 100px;
+    border: 3px solid #3bb9ff;
+    border-radius: 20%;
+}
+
 .content-container > .ask-question > a > span {
     font-size: 12px;
     padding-bottom: 8px;
