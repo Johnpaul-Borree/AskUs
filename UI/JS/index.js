@@ -79,3 +79,16 @@ function toggleClass(el, className, bool) {
     if(bool) addClass(el, className);
     else removeClass(el, className);
 }
+
+const signin = document.querySelectorAll('.signin-modal-form');
+
+function redirect() {
+    window.location = 'home.html';
+}
+
+for (let i = 0; i < signin.length; i++) {
+    signin[i].addEventListener('submit', function(evt){
+        evt.preventDefault();
+        redirect();
+    });
+}
