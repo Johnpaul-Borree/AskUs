@@ -83,7 +83,7 @@ function toggleClass(el, className, bool) {
 const signin = document.querySelectorAll('.signin-modal-form');
 
 function redirect() {
-    window.location = 'home.html';
+    window.location = 'UI/home.html';
 }
 
 for (let i = 0; i < signin.length; i++) {
