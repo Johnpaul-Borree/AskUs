@@ -72,8 +72,9 @@ button{
     border-radius: 3px;
     color: #3bb9ff;
 }
-button:focus{
-    border: none;
+button:focus,
+button:hover{
+    outline: none;
 }
 button.login{
     border: 1px solid #fff;
@@ -95,8 +96,309 @@ footer{
 footer > p{
     padding-top: 20px;
 }
+.signin-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 54, 66, 0.9);
+    z-index: 300;
+    overflow-y: auto;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
 
-
+}
+.signin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 54, 66, 0.9);
+    z-index: 3;
+    overflow-y: auto;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  
+  .signin-modal.signin-modal--is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .signin-modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    margin: 3em auto 4em;
+    cursor: auto;
+    border-radius: 0.25em;
+    transform: translateY(-30px);
+    transition: transform 0.3s;
+  }
+  
+  .signin-modal--is-visible .signin-modal-container {
+    transform: translateY(0);
+  }
+  
+  .signin-modal-switcher:after {
+    /* clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .signin-modal-switcher li {
+    width: 50%;
+    float: left;
+    text-align: center;
+  }
+  
+  .signin-modal-switcher li:first-child a {
+    border-radius: .25em 0 0 0;
+  }
+  
+  .signin-modal-switcher li:last-child a {
+    border-radius: 0 .25em 0 0;
+  }
+  
+  .signin-modal-switcher a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #d2d8d8;
+    color: #809191;
+  }
+  
+  .signin-modal-switcher a.selected {
+    background: #FFF;
+    color: #505260;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .signin-modal-container {
+      margin: 4em auto;
+    }
+    .signin-modal-switcher a {
+      height: 70px;
+      line-height: 70px;
+    }
+  }
+  
+  .signin-modal-form {
+    padding: 1.4em;
+  }
+  
+  .signin-modal-fieldset {
+    position: relative;
+    margin: 1.4em 0;
+  }
+  
+  .signin-modal-fieldset:first-child {
+    margin-top: 0;
+  }
+  
+  .signin-modal-fieldset:last-child {
+    margin-bottom: 0;
+  }
+  
+  .signin-modal-label {
+    font-size: 1.4rem;
+  }
+  
+  .signin-modal-label.signin-modal-label_image {
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+  }
+  
+  .signin-modal-label.signin-modal-label_username {
+    background-image: url("../Images/icon-username.svg");
+  }
+  
+  .signin-modal-label.signin-modal-label_email {
+    background-image: url("../Images/icon-email.svg");
+  }
+  
+  .signin-modal-label.signin-modal-label_password {
+    background-image: url("../Images/icon-password.svg");
+  }
+  
+  .signin-modal-input {
+    margin: 0;
+    padding: 0;
+    border-radius: 0.25em;
+  }
+  
+  .signin-modal-input.signin-modal-input_full-width {
+    width: 100%;
+  }
+  
+  .signin-modal-input.signin-modal-input_has-padding {
+    padding: 12px 20px 12px 50px;
+  }
+  
+  .signin-modal-input.signin-modal-input_has-border {
+    border: 1px solid #d2d8d8;
+    appearance: none;
+  }
+  
+  .signin-modal-input.signin-modal-input_has-border:focus {
+    border-color: #343642;
+    -webkit-box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+            box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+    outline: none;
+  }
+  
+  .signin-modal-input.signin-modal-input_has-error {
+    border: 1px solid #d76666;
+  }
+  
+  .signin-modal-input[type=submit] {
+    padding: 16px 0;
+    cursor: pointer;
+    background: #2f889a;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    appearance: none;
+  }
+  
+  .signin-modal-input[type=submit]:hover, .signin-modal-input[type=submit]:focus {
+    background: #3599ae;
+    outline: none;
+  }
+  
+  .signin-modal-error {
+    display: inline-block;
+    position: absolute;
+    left: -5px;
+    bottom: -35px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    z-index: 2;
+    color: #FFF;
+    font-size: 1.3rem;
+    border-radius: 0.25em;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s 0s, visibility 0s 0.2s;
+  }
+  
+  .signin-modal-error::after {
+    /* triangle */
+    content: '';
+    position: absolute;
+    left: 22px;
+    bottom: 100%;
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(215, 102, 102, 0.9);
+  }
+  
+  .signin-modal-error.signin-modal-error--is-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s 0s, visibility 0s 0s;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .signin-modal-form {
+      padding: 2em;
+    }
+    .signin-modal-fieldset {
+      margin: 2em 0;
+    }
+    .signin-modal-fieldset:first-child {
+      margin-top: 0;
+    }
+    .signin-modal-fieldset:last-child {
+      margin-bottom: 0;
+    }
+    .signin-modal-input.signin-modal__input--has-padding {
+      padding: 16px 20px 16px 50px;
+    }
+    .signin-modal-input[type=submit] {
+      padding: 16px 0;
+    }
+  }
+  
+  .signin-modal-message {
+    padding: 1.4em 1.4em 0;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .signin-modal-message {
+      padding: 2em 2em 0;
+    }
+  }
+  
+  .signin-modal-bottom-message {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -30px;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  
+  .signin-modal-bottom-message a {
+    color: #FFF;
+    text-decoration: underline;
+  }
+  
+  .signin-modal-close {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: -40px;
+    background: url("../img/icon-close.svg") no-repeat center center;
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  @media only screen and (min-width: 1170px) {
+    .signin-modal-close {
+      display: none;
+    }
+  }
+  
+  .signin-modal-block {
+    display: none;
+  }
+  
+  .signin-modal-block.signin-modal-block--is-selected {
+    display: block;
+  }
+  
 @media only screen and (max-width: 800px) {
     body{
         font-size: 14px;
