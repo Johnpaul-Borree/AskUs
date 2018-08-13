@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 html,body{
     height: 150vh;
 }
@@ -61,28 +69,38 @@ body{
     width: 80%;
     line-height: 25px;
 }
-button{
-    width: 300px;
-    min-width: 300px;
-    background: #fff;
-    margin: 10px auto 5px;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 3px;
-    color: #3bb9ff;
+
+.signup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
 }
-button:focus,
-button:hover{
-    outline: none;
+
+.signup > li {
+    padding: 2%;
 }
-button.login{
-    border: 1px solid #fff;
+
+.signup > li > a {
+    height: auto;
+    line-height: normal;
     background: transparent;
-    color: #fff;
-    margin-top: 10px;
+    padding: .6em 1em;
+    font-size: 22px;
+    border-radius: 50em;
 }
-footer{
+
+.signup > li > a.signin {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #21085c;
+}
+
+.signup > li > a.login {
+    background: #233585;
+    color: white;
+}
+
+footer {
     margin-top: auto;
     margin-bottom: 5%;
     min-width: 100%;
@@ -92,9 +110,6 @@ footer{
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-}
-footer > p{
-    padding-top: 20px;
 }
 .signin-modal{
     position: fixed;
@@ -183,6 +198,12 @@ footer > p{
   }
   
   @media only screen and (min-width: 600px) {
+
+    .signup > li > a {
+        font-size: 18px;
+        border-radius: 50em;
+    }
+
     .signin-modal-container {
       margin: 4em auto;
     }
@@ -369,6 +390,7 @@ footer > p{
   .signin-modal-bottom-message a {
     color: #FFF;
     text-decoration: underline;
+    font-size: 12px;
   }
   
   .signin-modal-close {
@@ -377,7 +399,7 @@ footer > p{
     width: 40px;
     height: 40px;
     right: 0;
-    top: -40px;
+    top: 0px;
     background: url("../img/icon-close.svg") no-repeat center center;
     color: transparent;
     text-indent: 100%;
@@ -399,16 +421,16 @@ footer > p{
     display: block;
   }
   
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 400px) {
     body{
         font-size: 14px;
     }
-    button{
-        width: 250px;
-        min-width: 250px;
-    }
     .info > p{
         width: 90%;
+    }
+    .signup > li > a {
+        font-size: 12px;
+        border-radius: 50em;
     }
     footer{
         font-size: 12px;
