@@ -128,6 +128,23 @@ answer.css
     margin-top: -5px;
 }
 
+.profile-details > .logout{
+    margin-left: 30%;
+    width: 100px;
+}
+
+.profile-details > .logout > a {
+    padding: 10px;
+    background: #e04b4a;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.profile-details > .logout > a:hover {
+    color: #666;
+    background: #e04b4a;
+}
+
 @media only screen and (max-width: 700px) {
 
     .feeds {
@@ -143,5 +160,14 @@ answer.css
         border: none;
     }
     
+    .profile-details > .photo-container {
+        width:150px;
+        height: 70px;
+        margin-left: 1%;
+    }
     
+    .profile-details > .photo-container > img {
+        width: 100%;
+        height: 100%;
+    }
 }
