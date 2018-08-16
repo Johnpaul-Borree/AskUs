@@ -4,7 +4,9 @@
   "description": "API section for askus",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "babel-node": "babel-node --presets=env",
+    "start": "nodemon --exec npm run babel-node -- ./server.js",
+    "test": "mocha --require babel-register -- ./test/servertest.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,15 @@
   },
   "homepage": "https://github.com/Johnpaul-Borree/AskUs#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0"
   }
 }
