@@ -1,0 +1,173 @@
+
+.profile-details {
+    box-sizing: border-box;
+    width: 80%;
+    display: flex;
+    margin-bottom: 40px;
+    padding-bottom: 30px
+}
+
+.profile-details:after {
+    position: absolute;
+    content: '';
+    border-bottom: 1px solid #d2d7da;
+    width: 80%;
+    top: 150px;
+    left: 10%;
+  }
+.profile-details > .profile-pix {
+    margin-left: 10%;
+    padding: 10px;
+}
+
+.profile-details > .description {
+    margin-left: 10px;
+}
+
+.feeds {
+    position: absolute;
+    top: 300px;
+    padding-right: 20px;
+    margin-left: 10%;
+    font-size: 14px;
+    line-height: 30px;
+    color: #777;
+}
+.feeds > p {
+    padding: 10px;
+    color: #111;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.feeds > ul > li > a.current, 
+.feeds > ul > li > a:hover{
+    background: #666;
+    color: #d2d7da;
+    padding: 4px;
+    border-radius: 3px;
+
+}
+
+.question-view > hr {
+    background: #d2d7da;
+    margin: 20px 0 20px 0;
+    width: 100%;
+}
+
+/* 
+answer.css
+ */
+ .question-view > .question {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    padding-bottom: 15px;
+}
+.question-view > .tags > div:last-child {
+    margin-left: 10%;
+    color: #666;
+}
+.question-view > .answer {
+    padding-top: 10px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25px;
+    padding-bottom: 15px;
+}
+.question-view > .question  > .user-details,
+.question-view > .answer  > .answer-details {
+    font-size: 12px;
+    color: #666;
+}
+
+.question-view > .profile-container {
+    position: relative;
+    width: 20%;
+    margin: 0px 0px 10px;
+    text-align: center;
+    display: flex;
+}
+.question-view > .my-comment > .question > .profile-container {
+    width: 10%;
+    margin: 10px 0px 10px;
+    text-align: center;
+    display: flex;
+}
+
+.question-view > .question > .profile-container img,
+.question-view > .answer > .profile-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.question-view > .my-comment > .question > .profile-container img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+.question-view > .question > .user-details {
+    margin-left: 10px;
+}
+/* end answer.css */
+
+.profile-details > .photo-container {
+    width:150px;
+    height: 150px;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.profile-details > .photo-container > img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    margin-top: -5px;
+}
+
+.profile-details > .logout{
+    margin-left: 30%;
+    width: 100px;
+}
+
+.profile-details > .logout > a {
+    padding: 10px;
+    background: #e04b4a;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.profile-details > .logout > a:hover {
+    color: #666;
+    background: #e04b4a;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .feeds {
+        position: relative;
+        top: 10px;
+    }
+    .feeds > ul {
+        display: flex;
+        justify-content: space-between;
+    } 
+    
+    .profile-details:after {
+        border: none;
+    }
+    
+    .profile-details > .photo-container {
+        width:150px;
+        height: 70px;
+        margin-left: 1%;
+    }
+    
+    .profile-details > .photo-container > img {
+        width: 100%;
+        height: 100%;
+    }
+}
