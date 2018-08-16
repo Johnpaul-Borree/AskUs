@@ -4,8 +4,8 @@
   "description": "API section for askus",
   "main": "server.js",
   "scripts": {
-    "start":"nodemon ./server.js --exec babel-node --presets babel-preset-env",
-    "test": "mocha --require babel-register -- ./test/questions.test.js"
+    "start": "nodemon ./server.js --exec babel-node --presets babel-preset-env",
+    "test": "mocha --require babel-core/register"
   },
   "repository": {
     "type": "git",
