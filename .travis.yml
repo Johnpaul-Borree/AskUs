@@ -6,3 +6,6 @@ before_install:
 - npm install 
 script: 
 - npm test
+branches:
+except:
+- master
