@@ -6,6 +6,14 @@ exports.questions = [
     question: 'How do I add External Javascript to html',
     answers: '1820 Answers',
     Topics: ['html', 'javascript'],
+    answersGiven: [
+      {
+        id: 1,
+        AnsweredBy: 'John Lens',
+        AddedOn: new Date('January 11, 2018 03:24:00'),
+        Answer: 'add a link tag to the head or body, head is prefered. e.g <link href="style.css(/css/dir)" rel="stylesheet"',
+      },
+    ],
   },
 
   {
@@ -15,6 +23,7 @@ exports.questions = [
     question: 'How to use Modal in javascript',
     answers: '120 Answers',
     Topics: ['html', 'javascript', 'css3'],
+    answersGiven: [],
   },
 
   {
@@ -24,6 +33,7 @@ exports.questions = [
     question: 'How can I reset password on XAMPP',
     answers: '90 Answers',
     Topics: ['PHP', 'MySql', 'XAMPP'],
+    answersGiven: [],
   },
 
   {
@@ -33,6 +43,7 @@ exports.questions = [
     question: 'How to create pointer border with css3',
     answers: '182 Answers',
     Topics: ['html5', 'css3'],
+    answersGiven: [],
   },
 
   {
@@ -42,6 +53,7 @@ exports.questions = [
     question: 'How do I use stored procedures in code first ASP.Net',
     answers: '420 Answers',
     Topics: ['ASP.Net MVC5', 'Entity Framework', 'Code First'],
+    answersGiven: [],
   },
 
 ];
