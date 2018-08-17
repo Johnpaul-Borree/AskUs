@@ -1,6 +1,10 @@
 # AskUs
 **AskUs** is an application that help users to ask or answer questons related to any topic it can be visualized as a stackoverflow lite.
 
+
+ [![Build Status](https://travis-ci.org/Johnpaul-Borree/AskUs.svg?branch=develop)](https://travis-ci.org/Johnpaul-Borree/AskUs)
+
+
 ## Required Features
 1. Users can create an account and log in.
 2. Users can post questions.
