@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node --presets babel-preset-env",
-    "test": "mocha --require babel-core/register"
+    "test": "mocha --require babel-core/register --exit"
   },
   "repository": {
     "type": "git",
