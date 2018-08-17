@@ -9,3 +9,5 @@ script:
 branches:
 except:
 - master
+after_test:
+- npm run coveralls
