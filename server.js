@@ -1,13 +1,17 @@
-import { express } from 'express';
+import express from 'express';
 
-import { routes } from './api/routes/questions';
+import questions from './api/routes/questions';
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api/questions', questions);
+
+app.set('json spaces', 40);
 
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-export default app;
