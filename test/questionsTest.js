@@ -32,6 +32,7 @@ describe('Questions API integration testing', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('questionBy');
           res.body.should.have.property('AddedOn');
+          res.body.should.have.property('question');
           res.body.should.have.property('answers');
           res.body.should.have.property('Topics');
           res.body.should.have.property('answersGiven');
@@ -44,6 +45,45 @@ describe('Questions API integration testing', () => {
         .get('/api/questions/20')
         .end((err, res) => {
           res.should.have.status(404);
+        });
+
+      done();
+    });
+  });
+
+  describe('#POST: /api/questions', () => {
+    it('should Post a question', (done) => {
+      const question = {
+        questionBy: 'Charles Ugwoke',
+        AddedOn: '2018-08-27T18:30:49-0300',
+        question: 'How to edit pictures in javascript',
+        Topics: ['html', 'javascript', 'css3'],
+      };
+
+      chai.request(router)
+        .post('/api/questions')
+        .send(question)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('answersGiven');
+        });
+      done();
+    });
+
+    it('should return "questionBy length must be at least 3 characters long "', (done) => {
+      const question = {
+        questionBy: 'xy',
+        AddedOn: '2018-05-27T18:30:49-0300',
+        question: 'How to edit pictures in C#',
+        Topics: ['visual-C#', 'C#'],
+      };
+
+      chai.request(router)
+        .post('/api/questions')
+        .send(question)
+        .end((err, res) => {
+          res.should.have.status(400);
         });
 
       done();
