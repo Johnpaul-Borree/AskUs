@@ -3,9 +3,9 @@
 
 
  [![Build Status](https://travis-ci.org/Johnpaul-Borree/AskUs.svg?branch=develop)](https://travis-ci.org/Johnpaul-Borree/AskUs)
-
- [![Coverage Status](https://coveralls.io/repos/github/Johnpaul-Borree/AskUs/badge.svg?branch=develop)](https://coveralls.io/github/Johnpaul-Borree/AskUs)
-
+[![Coverage Status](https://coveralls.io/repos/github/Johnpaul-Borree/AskUs/badge.svg?branch=develop)](https://coveralls.io/github/Johnpaul-Borree/AskUs)
+[![Maintainability](https://api.codeclimate.com/v1/badges/472f06dd8c9e4a6641f1/maintainability)](https://codeclimate.com/github/Johnpaul-Borree/AskUs/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/472f06dd8c9e4a6641f1/test_coverage)](https://codeclimate.com/github/Johnpaul-Borree/AskUs/test_coverage)
 
 ## Required Features
 1. Users can create an account and log in.
