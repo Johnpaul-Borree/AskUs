@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getAllQuestions, getQuestionById } from '../controllers/questionsControllers';
+import { getAllQuestions, getQuestionById, createQuestion } from '../controllers/questionsControllers';
 
 
 const router = express.Router();
@@ -9,6 +9,8 @@ const router = express.Router();
 router.get('/', getAllQuestions);
 
 router.get('/:questionId', getQuestionById);
+
+router.post('/', createQuestion);
 
 
 export default router;
