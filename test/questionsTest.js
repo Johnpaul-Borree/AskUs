@@ -89,4 +89,57 @@ describe('Questions API integration testing', () => {
       done();
     });
   });
+
+  describe('#POST: /api/questions/:questionId/answers', () => {
+    it('should Post an answer to a question', (done) => {
+      const answer = {
+        answeredBy: 'Charles Okoro',
+        AddedOn: '2018-08-27T18:30:49-0300',
+        Answer: 'This is my answer',
+      };
+
+      chai.request(router)
+        .post('/api/questions/3/answers')
+        .send(answer)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('answersGiven');
+        });
+      done();
+    });
+
+    it('should return "answeredBy length must be at least 3 characters long "', (done) => {
+      const answer = {
+        answeredBy: 'xy',
+        AddedOn: '2018-05-27T18:30:49-0300',
+        Answer: 'how was my answer',
+      };
+
+      chai.request(router)
+        .post('/api/questions/2/answers')
+        .send(answer)
+        .end((err, res) => {
+          res.should.have.status(400);
+        });
+
+      done();
+    });
+
+    it('should return "There is no question with the given id"', (done) => {
+      const answer = {
+        answeredBy: 'xy',
+        AddedOn: '2018-05-27T18:30:49-0300',
+        Answer: 'how was my answer',
+      };
+      chai.request(router)
+        .post('/api/questions/20/answers')
+        .send(answer)
+        .end((err, res) => {
+          res.should.have.status(404);
+        });
+
+      done();
+    });
+  });
 });
