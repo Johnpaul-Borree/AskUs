@@ -11,16 +11,16 @@ import {
 const router = express.Router();
 
 // GET /questions
-router.get('/', getAllQuestions);
+router.get('/questions', getAllQuestions);
 
 // GET /questions/<questionId>
-router.get('/:questionId', getQuestionById);
+router.get('/questions/:questionId', getQuestionById);
 
 // POST /questions
-router.post('/', createQuestion);
+router.post('/questions', createQuestion);
 
 // POST /questions/<questionId>/answers
-router.post('/:questionId/answers', answerQuestion);
+router.post('/questions/:questionId/answers', answerQuestion);
 
 
 export default router;

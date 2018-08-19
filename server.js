@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/questions', questions);
+app.use('/api/v1/', questions);
 
 app.set('json spaces', 40);
 
