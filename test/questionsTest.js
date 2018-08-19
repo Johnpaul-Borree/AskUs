@@ -11,10 +11,10 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Questions API integration testing', () => {
-  describe('#GET: /api/questions', () => {
+  describe('#GET: /api/v1/questions', () => {
     it('should get all questions', (done) => {
       chai.request(router)
-        .get('/api/questions')
+        .get('/api/v1/questions')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('array');
@@ -24,10 +24,10 @@ describe('Questions API integration testing', () => {
     });
   });
 
-  describe('#GET: /api/questions/:questionId', () => {
+  describe('#GET: /api/v1/questions/:questionId', () => {
     it('should get a single question', (done) => {
       chai.request(router)
-        .get('/api/questions/3')
+        .get('/api/v1/questions/3')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -43,7 +43,7 @@ describe('Questions API integration testing', () => {
     });
     it('should return "There is no question with the given id"', (done) => {
       chai.request(router)
-        .get('/api/questions/20')
+        .get('/api/v1/questions/20')
         .end((err, res) => {
           res.should.have.status(404);
         });
@@ -52,7 +52,7 @@ describe('Questions API integration testing', () => {
     });
   });
 
-  describe('#POST: /api/questions', () => {
+  describe('#POST: /api/v1/questions', () => {
     it('should Post a question', (done) => {
       const question = {
         questionBy: 'Charles Ugwoke',
@@ -62,7 +62,7 @@ describe('Questions API integration testing', () => {
       };
 
       chai.request(router)
-        .post('/api/questions')
+        .post('/api/v1/questions')
         .send(question)
         .end((err, res) => {
           res.should.have.status(200);
@@ -81,7 +81,7 @@ describe('Questions API integration testing', () => {
       };
 
       chai.request(router)
-        .post('/api/questions')
+        .post('/api/v1/questions')
         .send(question)
         .end((err, res) => {
           res.should.have.status(400);
@@ -91,7 +91,7 @@ describe('Questions API integration testing', () => {
     });
   });
 
-  describe('#POST: /api/questions/:questionId/answers', () => {
+  describe('#POST: /api/v1/questions/:questionId/answers', () => {
     it('should Post an answer to a question', (done) => {
       const answer = {
         answeredBy: 'Charles Okoro',
@@ -100,7 +100,7 @@ describe('Questions API integration testing', () => {
       };
 
       chai.request(router)
-        .post('/api/questions/3/answers')
+        .post('/api/v1/questions/3/answers')
         .send(answer)
         .end((err, res) => {
           res.should.have.status(200);
@@ -118,7 +118,7 @@ describe('Questions API integration testing', () => {
       };
 
       chai.request(router)
-        .post('/api/questions/2/answers')
+        .post('/api/v1/questions/2/answers')
         .send(answer)
         .end((err, res) => {
           res.should.have.status(400);
@@ -134,7 +134,7 @@ describe('Questions API integration testing', () => {
         Answer: 'how was my answer',
       };
       chai.request(router)
-        .post('/api/questions/20/answers')
+        .post('/api/v1/questions/20/answers')
         .send(answer)
         .end((err, res) => {
           res.should.have.status(404);
