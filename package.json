@@ -15,7 +15,10 @@
     "instrument": false
   },
   "scripts": {
-    "start": "node ./server.js --exec babel-node --presets babel-preset-env",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

@@ -2,7 +2,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 
-import router from '../server';
+import router from '../src/server';
 // import questions from '../api/models/questionsModels';
 
 
