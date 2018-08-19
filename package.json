@@ -50,5 +50,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "joi": "^13.6.0"
+  },
+  "engine": {
+    "node": "8.11.3"
   }
 }
