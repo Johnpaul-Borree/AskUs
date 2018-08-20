@@ -15,10 +15,8 @@
     "instrument": false
   },
   "scripts": {
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/server.js",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s",
+    "start": "babel-node src/server",
+    "start_dev": "nodemon --require babel-register src/server",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-register test/* --exit",
     "coverage": "nyc report mocha --require babel-register test/* --exit",
     "coveralls": "npm run coverage"
