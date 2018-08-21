@@ -9,9 +9,10 @@ script:
 branches:
 - only
 - develop
+directories:
+  - node_modules
 after_script:
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
-after_test:
-- npm install -g coveralls 
+after_success:
 - npm run coveralls
