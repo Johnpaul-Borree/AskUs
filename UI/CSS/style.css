@@ -26,11 +26,12 @@ body{
 }
 .header{
     min-width: 100%;
-    height: 8vh;
+    height: 10vh;
     text-align: center
 }
 .header > h2{
-    padding-top: 2px;
+    padding-top:-2px;
+    font-size: 2.5em;
 }
 .header > h2 a{
     text-decoration: none;
@@ -56,6 +57,14 @@ body{
     justify-content: center;
     color: #fff;
 }
+.content > img {
+  margin-top: -200px;
+}
+.greetings > p {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+}
 .info{
     margin-top: 3%;
     min-width: 100%;
@@ -64,6 +73,10 @@ body{
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
+}
+.info > h2 {
+  padding: 2%;
+  font-size: 1.3em;
 }
 .info > p{
     width: 80%;
@@ -92,7 +105,7 @@ body{
 
 .signup > li > a.signin {
     border: 1px solid rgba(255, 255, 255, 0.8);
-    color: #21085c;
+    color: #fff;
 }
 
 .signup > li > a.login {
@@ -101,8 +114,9 @@ body{
 }
 
 footer {
+  background: #348899;
     margin-top: auto;
-    margin-bottom: 5%;
+    padding-bottom: 1%;
     min-width: 100%;
     max-width: 100%;
     font-size: 15px;
@@ -110,6 +124,9 @@ footer {
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
+}
+footer > div > a {
+  color: #fff;
 }
 .signin-modal{
     position: fixed;
