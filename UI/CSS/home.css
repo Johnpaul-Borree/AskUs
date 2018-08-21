@@ -77,6 +77,12 @@ img {
     border-bottom: 1px solid #333;
 }
 
+.navbarcontainer > ul > li .ask-button {
+    padding: 5px;
+    background: #fff;
+    border-radius: 3px;
+}
+
 .navbarcontainer > ul > li:last-child{
     border-bottom: none;
 }
@@ -112,21 +118,6 @@ img {
     display: inherit;
     transition: all 1s ease;
 }
-
-.navbarcontainer > ul > li > a > .answer-count,
-.navbarcontainer > ul > li > a > .Question-count {
-    position: absolute;
-    margin-top: -33px;
-    margin-left: 50px;
-    font-size: 11px;
-    line-height: 20px;
-    text-align: center;
-    padding: 0px 5px;
-    background: #e04b4a;
-    color: #FFF;
-    border-radius: 3px;
-}
-
 .navbarcontainer > ul > li > a > .photo-container {
     width:50px;
     height: 50px;
@@ -272,8 +263,8 @@ img {
 }
 
 .question-view > a > .answer {
-    padding-top: 20px;
-    font-size: 17px;
+    padding-top: 10%;
+    font-size: 12px;
     font-weight: 400;
     line-height: 25px;
     padding-bottom: 15px;
@@ -316,6 +307,7 @@ img {
 .question-view > a > .question-answer-number,
 .question-view > .question-time,
 .question-view > .question-views-number {
+    margin-top: 3%;
     margin-left: 30px;
     font-size: 12px;
     color: #666;
@@ -410,7 +402,7 @@ img {
     flex-flow: column wrap;
 }
 
-.question-container > form > input[type="text"]{
+.question-container > form > .select {
     color: #979797;
     height: 28px;
     padding: 15px;
@@ -529,6 +521,12 @@ img {
         border-bottom: none;
     }
     
+    .navbarcontainer > ul > li .ask-button {
+        padding: 5px 100px 5px 100px;
+        background: #3bb9ff;
+        border-radius: 3px;
+    }
+
 .navbarcontainer > ul > li > a:hover,
 .navbarcontainer > ul > li > a.current {
     color: #333;

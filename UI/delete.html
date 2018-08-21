@@ -7,45 +7,34 @@
         <link href="CSS/home.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
-            <div class="navbarcontainer js-navbar-container">
-                <div class="heading">
-                    <h2><a href="home.html">ask<i>us</i></a></h2>
-                </div>
-                <div class="search-box">
-                        <form role="form">
-                            <input type="search" name="search" placeholder="Search...">
-                        </form>
-                    </div>
-                <img src="UI/Images/icon-menu.svg" alt="menu" class="menu-toggle">
-                <ul class="navbar" data-mode="close">
-                    <li><a href="home.html" >Home</a></li>
-                    <li>
-                        <a href="profile.html" target="_blank" data-tab="answers">
-                            Answers
-                            <div class="answer-count">4</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="profile-questions.html" target="_blank" data-tab="questions">
-                            Questions
-                            <div class="Question-count">6</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="profile.html" target="_blank" data-tab="photo">
-                            <div class="photo-container">
-                                <img src="Images/user1.jpeg" alt="Profile">
+            <div class="container">
+                    <div class="navbarcontainer js-navbar-container">
+                        <div class="heading">
+                            <h2><a href="home.html">ask<i>us</i></a></h2>
+                        </div>
+                        <div class="search-box">
+                                <form role="form" class="search-box-form">
+                                    <input type="search" name="search" placeholder="Search...">
+                                </form>
                             </div>
-                        </a>
-                    </li>
-                    <li><a href="#0" class="ask-button">Ask Question</a></li>
-                </ul>
-                <div class="breadcrumb">
-                    <div><a href="#0"  class="current">Recently Asked</a></div>                    
-                    <div><a href="#0"> Most </a></div>
-                </div>
-            </div>
+                        <img src="Images/icon-menu.svg" alt="menu" class="menu-toggle">
+                        <ul class="navbar" data-mode="close">
+                            <li><a href="home.html" class="current">Home</a></li>
+                            <li><a href="#0" class="ask-button">Ask Question</a></li>
+                            <li>
+                                <a href="profile.html" target="_blank">
+                                    <div class="photo-container">
+                                        <img src="Images/user1.jpeg" alt="Profile">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="breadcrumb">
+                            <div><a href="home.html"  class="current">Recently Asked</a></div>                    
+                            <div><a href="mostAns.html"> Most Answered</a></div>
+                        </div>
+                    </div>
+                   
             <div class="content-container">
                 <div class="question-view">
                     <div class="tags">
@@ -71,16 +60,26 @@
                         <span class="success">Okay</span>
                 </div>
                 <div class="post-question-modal">
-                    <div class="question-container">
-                        <span class="close-button">&times;</span>
-                        <h2>Ask question by completing the fields</h2>
-                        <form action="#0" class="ask-question-input">
-                                <input type="text" placeholder="Topics of interest" name="question" required>
-                                <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
-                                <input type="submit" value="Post question" id="post-question">
-                        </form>
+                        <div class="question-container">
+                            <span class="close-button">&times;</span>
+                            <h2>Ask question by completing the fields</h2>
+                            <form action="javascript:void(0);" class="ask-question-input">
+                                    <input list="topics" name="myTopics" placeholder="Topics of interest" required class="select">
+                                    <datalist id="topics">
+                                    <option value="Javascript">
+                                    <option value="Node.js">
+                                    <option value="Asp.Net MVC">
+                                    <option value="ASP.Net Core">
+                                    <option value="C#">
+                                    <option value="react.js">
+                                    <option value="Angular.js">
+                                    </datalist>
+                                    <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
+                                    <input type="submit" value="Post question" id="post-question">
+                            </form>
+                        </div>    
+                        
                     </div>
-                </div>
         </div>
         <script src="JS/main.js"></script>
         <script src="JS/approve.js"></script>

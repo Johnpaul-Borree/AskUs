@@ -141,16 +141,26 @@
                     </div>
 
                     <div class="post-question-modal">
-                        <div class="question-container">
-                            <span class="close-button">&times;</span>
-                            <h2>Ask question by completing the fields</h2>
-                            <form action="#0" class="ask-question-input">
-                                <input type="text" placeholder="Topics of interest" name="question" required>
-                                <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
-                                <input type="submit" value="Post question" id="post-question">
-                            </form>
+                            <div class="question-container">
+                                <span class="close-button">&times;</span>
+                                <h2>Ask question by completing the fields</h2>
+                                <form action="javascript:void(0);" class="ask-question-input">
+                                        <input list="topics" name="myTopics" placeholder="Topics of interest" required class="select">
+                                        <datalist id="topics">
+                                        <option value="Javascript">
+                                        <option value="Node.js">
+                                        <option value="Asp.Net MVC">
+                                        <option value="ASP.Net Core">
+                                        <option value="C#">
+                                        <option value="react.js">
+                                        <option value="Angular.js">
+                                        </datalist>
+                                        <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
+                                        <input type="submit" value="Post question" id="post-question">
+                                </form>
+                            </div>    
+                            
                         </div>
-                    </div>
                 </div>
             </div>
             <script src="JS/main.js"></script>
