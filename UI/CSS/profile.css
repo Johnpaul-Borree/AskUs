@@ -48,6 +48,42 @@
 
 }
 
+.top-view {
+    display: flex;
+    margin-left: 20%;
+}
+
+.top-view > .answer-hold {
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 40%;
+    border: 1px solid #efefef;
+}
+
+.top-view span{
+    font-size: 25px;
+    color: #333;
+}
+
+.top-view > .answer-hold > a {
+    font-size: 5em;
+    color: #3bb9ff;
+}
+
+.top-view > .question-hold {
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 35%;
+    border: 1px solid #efefef;
+}
+
+.top-view > .question-hold > a {
+    font-size: 5em;
+    color: #3bb9ff;
+}
+
 .question-view > hr {
     background: #d2d7da;
     margin: 20px 0 20px 0;
@@ -68,7 +104,7 @@ answer.css
     color: #666;
 }
 .question-view > .answer {
-    padding-top: 10px;
+    padding-top: 10%;
     font-size: 17px;
     font-weight: 400;
     line-height: 25px;

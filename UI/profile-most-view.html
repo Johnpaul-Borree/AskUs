@@ -5,47 +5,67 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="CSS/home.css" rel="stylesheet">
-        <link rel="shortcut icon" type="image/jpg" href="Images/logo.jpg">
+        <link rel="stylesheet" href="CSS/profile.css">
+        <link rel="shortcut icon" type="image/jpg" href="Images/logo.jpg">        
     </head>
     <body>
-            <div class="container">
+        <div class="container">
                 <div class="navbarcontainer js-navbar-container">
-                    <div class="heading">
-                        <h2><a href="home.html">ask<i>us</i></a></h2>
-                    </div>
-                    <div class="search-box">
-                            <form role="form" class="search-box-form">
-                                <input type="search" name="search" placeholder="Search...">
-                            </form>
+                        <div class="heading">
+                            <h2><a href="home.html">ask<i>us</i></a></h2>
                         </div>
-                    <img src="Images/icon-menu.svg" alt="menu" class="menu-toggle">
-                    <ul class="navbar" data-mode="close">
-                        <li><a href="home.html" class="current">Home</a></li>
-                        <li><a href="#0" class="ask-button">Ask Question</a></li>
-                        <li>
-                            <a href="profile.html" target="_blank">
-                                <div class="photo-container">
-                                    <img src="Images/user1.jpeg" alt="Profile">
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="breadcrumb">
-                        <div><a href="home.html">Recently Asked</a></div>                    
-                        <div><a href="mostAns.html"  class="current"> Most Answered</a></div>
-                    </div>
+                        <div class="search-box">
+                                <form role="form" class="search-box-form">
+                                    <input type="search" name="search" placeholder="Search...">
+                                </form>
+                            </div>
+                        <img src="Images/icon-menu.svg" alt="menu" class="menu-toggle">
+                        <ul class="navbar" data-mode="close">
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="#0" class="ask-button">Ask Question</a></li>
+                            <li>
+                                <a href="profile.html" target="_blank">
+                                    <div class="photo-container">
+                                        <img src="Images/user1.jpeg" alt="Profile">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                 </div>
-               
-                <div class="content-container">
-                        <div class="ask-question ask-button">
-                            <a href="#0">
-                                <div class="profile-container">
-                                    <img src="Images/user1.jpeg" alt="profile" class="user-profile">
-                                    <span>John doe</span>
-                                </div>
-                                <p>Ask your Question</p>
-                            </a>
+            <div class="content-container">
+                <div class="profile-details">
+                        <div class="photo-container">
+                            <img src="Images/user1.jpeg" alt="Profile">
                         </div>
+                        <div class="description">
+                            <h2>My Name</h2>
+                            <p>Full Stack Computer Programmer Lagos Nigeria</p>
+                            <ul class="interests">
+                                <li>Javascript</li>
+                                <li>Cisco Networking</li>
+                                <li>Java</li>
+                                <li>Nodejs</li>
+                            </ul>
+                        </div>
+                        <div class="logout"><a href="../index.html">log out</a></div>
+                    </div>
+                    <div class="top-view">
+                            <div class="answer-hold">
+                                <a href="#0" class="current">4</a>
+                                <span class="answers">Answers</span>
+                            </div>
+                            <div class="question-hold">
+                                <a href="profile.html">6</a>
+                                <span class="answers">Questions</span>
+                            </div>
+                        </div>
+                    <aside class="feeds">
+                        <p>Feeds</p>
+                        <ul>
+                            <li><a href="profile-most-view.html" class="current">Most Answered</a></li>
+                            <li><a href="profile.html"> Recent Questions</a></li>
+                        </ul>
+                    </aside>
         
                         <div class="question-view">
                             <div class="tags">
@@ -63,7 +83,7 @@
                                     <img src="Images/user.jpg" alt="profile"> &nbsp;
                                 </div>
                                 <span class="user-details">Damian Gladson <br>Founder Hlep coperations</span><br>
-                                <a href="answers.html" target="_blank"><span class="question-answer-number">34 Answers</span></a>
+                                <a href="answers.html" target="_blank"><span class="question-answer-number">3 Answers</span></a>
                                 <span class="question-time">2 minutes ago</span>
                                 <span class="question-views-number">13 views</span>
                             <a href="#0">
@@ -102,7 +122,7 @@
                                     <img src="Images/user3.jpeg" alt="profile">&nbsp;                        
                             </div>
                             <span class="user-details"> Professor Robbin <br>Full Stack Developer Microsoft</span><br>
-                            <a href="answers.html" target="_blank"><span class="question-answer-number">25 Answers</span></a>
+                            <a href="answers.html" target="_blank"><span class="question-answer-number">4 Answers</span></a>
                             <span class="question-time">20 minutes ago</span>
                             <span class="question-views-number">12 views</span>
                             
@@ -126,30 +146,30 @@
                                     <span class="downvote"> 5 downvotes</span><br>
                             
                         </div>
-                        <div class="post-question-modal">
-                                <div class="question-container">
-                                    <span class="close-button">&times;</span>
-                                    <h2>Ask question by completing the fields</h2>
-                                    <form action="javascript:void(0);" class="ask-question-input">
-                                            <input list="topics" name="myTopics" placeholder="Topics of interest" required class="select">
-                                            <datalist id="topics">
-                                            <option value="Javascript">
-                                            <option value="Node.js">
-                                            <option value="Asp.Net MVC">
-                                            <option value="ASP.Net Core">
-                                            <option value="C#">
-                                            <option value="react.js">
-                                            <option value="Angular.js">
-                                            </datalist>
-                                            <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
-                                            <input type="submit" value="Post question" id="post-question">
-                                    </form>
-                                </div>    
-                                
+
+                    <div class="post-question-modal">
+                            <div class="question-container">
+                                <span class="close-button">&times;</span>
+                                <h2>Ask question by completing the fields</h2>
+                                <form action="javascript:void(0);" class="ask-question-input">
+                                        <input list="topics" name="myTopics" placeholder="Topics of interest" required class="select">
+                                        <datalist id="topics">
+                                        <option value="Javascript">
+                                        <option value="Node.js">
+                                        <option value="Asp.Net MVC">
+                                        <option value="ASP.Net Core">
+                                        <option value="C#">
+                                        <option value="react.js">
+                                        <option value="Angular.js">
+                                        </datalist>
+                                        <textarea name="question-body" required placeholder="Your Questions goes here..." id="question-body"></textarea>
+                                        <input type="submit" value="Post question" id="post-question">
+                                </form>
+                            </div>    
+                            
                         </div>
-            
                 </div>
             </div>
             <script src="JS/main.js"></script>
         </body>
-</html>
+    </html>
