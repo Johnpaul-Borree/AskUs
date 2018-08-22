@@ -53,3 +53,22 @@
 .question-view > .question > .user-details {
     margin-left: 10px;
 }
+
+.question-view > .myAnswer > textarea {
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 
+    inset 0 0 10px  rgba(0,0,0,0.1),
+          0 0 20px rgba(0,0,0,0.1); 
+    display: block;
+    font-family: 'Marck Script',cursive;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 4% auto;
+    padding: 11px 10px 0 10px;
+    resize: none;
+    height: 40vh;
+    width: 60%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.5)
+}

@@ -304,22 +304,34 @@ img {
     margin-left: 10px;
 }
 
-.question-view > a > .question-answer-number,
 .question-view > .question-time,
 .question-view > .question-views-number {
+    margin-left: 30px;
     margin-top: 3%;
+    font-size: 12px;
+    color: #666;
+}
+
+.question-view > a > .question-answer-number,
+.question-view > .answer-time {
+    margin-top: 3%;
+    font-size: 12px;
+    color: #666;
+}
+
+.question-view > .answer-views-number,
+.question-view > .upvote,
+.question-view > .downvote {
     margin-left: 30px;
     font-size: 12px;
     color: #666;
 }
 
-.question-view > .answer-time,
-.question-view > .answer-views-number,
-.question-view > .upvote,
-.question-view > .downvote {
-    margin-left: 20px;
-    font-size: 12px;
-    color: #666;
+.question-view > .post-answer {
+    margin-top: 30%;
+    padding: 10px;
+    background: #3bb9ff;
+    border-radius: 3px;
 }
 
 .question-view > .user-details,
@@ -331,31 +343,6 @@ img {
 }
 .question-view > a > .question-answer-number:hover {
     text-decoration: underline;
-}
-
-.my-comment > .comment-box {
-    margin-left: 40px;
-    margin-top: -22px;
-}   
-
-.question-view > .my-comment {
-    margin-top: 20px;
-    padding: 10px;
-    background: #eceaea;
-    border-radius: 3px;
-}
-.my-comment > .comment-me {
-    margin-top: 10px;
-}
-
-.my-comment > .comment-box > form > input {
-    border-radius: 0.25em;
-    width: 60%;
-    margin-top: -10px;
-    padding: 5px 7px 5px 5px;
-    border: 1px solid #d2d8d8;
-    appearance: none;
-    font-size: 12px;
 }
 
 .content-container > .post-question-modal {
@@ -563,6 +550,16 @@ img {
         top: 80px;
     }
 }
+
+.question-view > .post-answer {
+    width: 100px;
+    margin-top: 2%;
+    margin-left: 50%;
+    padding: 5px;
+    background: #3bb9ff;
+    border-radius: 3px;
+}
+
 
 @media only screen and (min-width: 996px) {
     .navbarcontainer > ul > li:nth-child(1){
