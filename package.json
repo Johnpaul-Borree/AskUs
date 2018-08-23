@@ -45,9 +45,11 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "istanbul": "^0.4.5",
-    "joi": "^13.6.0"
+    "joi": "^13.6.0",
+    "pg": "^7.4.3"
   },
   "engines": {
     "node": "8.11.3"
