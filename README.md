@@ -3,7 +3,7 @@
 
 
  [![Build Status](https://travis-ci.org/Johnpaul-Borree/AskUs.svg?branch=develop)](https://travis-ci.org/Johnpaul-Borree/AskUs)
-[![Coverage Status](https://coveralls.io/repos/github/Johnpaul-Borree/AskUs/badge.svg?branch=develop)](https://coveralls.io/github/Johnpaul-Borree/AskUs)
+[![Coverage Status](https://coveralls.io/repos/github/Johnpaul-Borree/AskUs/badge.svg?branch=develop)](https://coveralls.io/github/Johnpaul-Borree/AskUs?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/555dd4f03f093552b7a1/maintainability)](https://codeclimate.com/github/Johnpaul-Borree/AskUs/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/555dd4f03f093552b7a1/test_coverage)](https://codeclimate.com/github/Johnpaul-Borree/AskUs/test_coverage)
 
