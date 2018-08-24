@@ -68,7 +68,7 @@ class User {
       `SELECT username, 
       first_name, 
       last_name, 
-      email FROM users 
+      email FROM ask_user
       WHERE id = $1`, [id],
     )
       .then((result) => {
