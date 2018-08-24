@@ -1,26 +1,8 @@
-import express from 'express';
+import userControllers from '../controllers/ask_user_controller';
 
-// import {
-//   getAllQuestions,
-//   getQuestionById,
-//   createQuestion,
-//   answerQuestion,
-// } from '../controllers/questionsControllers';
-import client from '../models/populate_tables';
 
-const router = express.Router();
+const routeMiddleware = (app) => {
+  app.use('/auth', userControllers);
+};
 
-// // GET /questions
-// router.get('/questions', getAllQuestions);
-
-// // GET /questions/<questionId>
-// router.get('/questions/:questionId', getQuestionById);
-
-// // POST /questions
-// router.post('/questions', createQuestion);
-
-// // POST /questions/<questionId>/answers
-// router.post('/questions/:questionId/answers', answerQuestion);
-
-router.post('/', client);
-export default router;
+export default routeMiddleware;

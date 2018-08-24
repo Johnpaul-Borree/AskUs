@@ -71,3 +71,5 @@ router.post('/login', validator.login, (req, res) => {
     res.status(400).json({ status: 'failed', message: errors.array()[0].msg });
   }
 });
+
+export default router;
