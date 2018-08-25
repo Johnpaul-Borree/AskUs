@@ -1,24 +1,28 @@
 import pool from './dbConnect';
+// import User from './ask_user';
+
 
 class Question {
-  constructor(userId, questionBody, topics) {
+  constructor() {
     this.pool = pool;
-    this.questionBody = questionBody;
-    this.topics = topics;
+    this.questionBody = null;
+    this.topics = null;
+    this.userId = null;
   }
 
-  postQuestions() {
+  getQuestions(questionId) {
     const query = {
-      text: 'INSERT INTO ask_questions(question_body, topics) VALUES($1, $2) RETURNING *',
-      values: [this.questionBody, this.topics],
+      text: 'SELECT * FROM ask_questions WHERE id = $1 AND ask_user_id = $2',
+      values: [this.userId, questionId],
     };
-
     return this.pool.query(query)
       .then((result) => {
-        const questionId = result.rows[0].id;
-        if (!questionId) throw new Error();
+        if (result.rows[0]) {
+          return result.rows[0];
+        }
+        return false;
       })
-      .catch(() => { throw new Error(); });
+      .catch(err => err);
   }
 }
 

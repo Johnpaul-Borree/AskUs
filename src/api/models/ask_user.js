@@ -62,14 +62,12 @@ class User {
       .catch(err => err);
   }
 
-  getUser() {
-    const id = this.userId;
+  getUser(userId) {
     return this.pool.query(
       `SELECT username, 
       first_name, 
-      last_name, 
-      email FROM ask_user
-      WHERE id = $1`, [id],
+      last_name FROM ask_user
+      WHERE id = $1`, [userId],
     )
       .then((result) => {
         if (result.rows[0]) {
