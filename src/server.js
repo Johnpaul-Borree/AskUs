@@ -1,14 +1,16 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import routes from './api/routes/routes';
+import routeMiddleware from './api/routes/routes';
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/v1/', routes);
 app.set('json spaces', 40);
+
+
+routeMiddleware(app);
 
 const port = process.env.PORT || 3000;
 

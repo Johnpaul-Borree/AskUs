@@ -1,76 +1,75 @@
-import Joi from 'joi';
-
-import { questions } from '../models/questionsModels';
-
-function validateQuestion(question) {
-  const schema = {
-    questionBy: Joi.string().min(3).required(),
-    AddedOn: Joi.string().isoDate().required(),
-    question: Joi.string().min(5).required(),
-    Topics: Joi.array().items(Joi.string().required()),
-  };
-
-  return Joi.validate(question, schema);
-}
-
-function validateAnswer(question) {
-  const schema = {
-    answeredBy: Joi.string().min(3).required(),
-    AddedOn: Joi.string().isoDate().required(),
-    Answer: Joi.string().min(5).required(),
-  };
-
-  return Joi.validate(question, schema);
-}
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import validator from '../../validations/validator';
+import User from '../models/ask_user';
 
 
-exports.getAllQuestions = (req, res) => {
-  res.status(200).send(questions);
-};
+const router = express.Router();
 
-exports.getQuestionById = (req, res) => {
-  const question = questions.find(g => g.id === parseInt(req.params.questionId));
-  if (!question) return res.status(404).send('There is no question with the given id');
-  res.send(question);
-};
+// signup route
+router.post('/signup', validator.singUp, (req, res) => {
+  const errors = validator.validationResult(req);
 
-exports.createQuestion = (req, res) => {
-  const { error } = validateQuestion(req.body);
+  if (errors.isEmpty()) {
+    const user = new User();
+    user.checkUserExistBefore(req.body)
+      .then((emailExists) => {
+        if (!emailExists) { // Email doesn't exist so signup user;
+          user.askSignup()
+            .then((userId) => {
+              console.log(userId);
+              const payload = { userId };
+              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1hr' });
+              res.status(200).json(
+                {
+                  status: 'success',
+                  token,
+                  message: 'Account created Successfully',
+                },
+              );
+            })
+            .catch(() => {
+              res.status(500).json({ status: 'failed', message: 'Problem signing up' });
+            });
+        } else {
+          res.status(422).json({ status: 'failed', message: 'email exist', email: emailExists.email });
+        }
+      });
+  } else {
+    res.status(400).json({ status: 'failed', message: errors.array()[0].msg });
+  }
+});
 
-  if (error) return res.status(400).send(error.details[0].message);
 
-  const question = {
-    id: questions.length + 1,
-    questionBy: req.body.questionBy,
-    AddedOn: req.body.AddedOn,
-    question: req.body.question,
-    answers: '0 answers',
-    Topics: req.body.Topics,
-    answersGiven: [],
-  };
+// login route
+router.post('/login', validator.login, (req, res) => {
+  const errors = validator.validationResult(req);
+  if (errors.isEmpty()) {
+    const user = new User();
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.askLogin()
+      .then((result) => {
+        switch (result.code) {
+          case 2:
+            {
+              const payload = {
+                userId: result.id,
+              };
+              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1hr' });
+              res.status(200).json({ status: 'success', message: 'You are logged in!', token });
+            }
+            break;
+          default:
+            res.status(401).json({ status: 'failed', message: 'invalid Email or Password' });
+        }
+      })
+      .catch(() => {
+        res.status(500).json({ status: 'failed', message: 'internal server error' });
+      });
+  } else {
+    res.status(400).json({ status: 'failed', message: errors.array()[0].msg });
+  }
+});
 
-  questions.push(question);
-
-  res.send(question);
-};
-
-exports.answerQuestion = (req, res) => {
-
-  const question = questions.find(g => g.id === parseInt(req.params.questionId));
-  if (!question) return res.status(404).send('There is no question with the given id');
-
-  const { error } = validateAnswer(req.body);
-
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const answer = {
-    id: question.answersGiven.length + 1,
-    answeredBy: req.body.answeredBy,
-    AddedOn: req.body.AddedOn,
-    Answer: req.body.Answer,
-  };
-
-  question.answersGiven.push(answer);
-
-  res.send(question);
-};
+export default router;
