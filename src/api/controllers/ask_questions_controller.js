@@ -35,6 +35,21 @@ router.get('/questions/:questionId', (req, res) => {
     });
 });
 
+router.post('/questions', (req, res) => {
+  question.postQuestion({
+    userId: req.body.userId,
+    questionBody: req.body.questionBody,
+  })
+    .then((result) => {
+      console.log(req.body.userId);
+      const justAdded = result.rows[0];
+      justAdded.created_At = new Date(justAdded.created_At).toDateString();
+      res.status(200).json({ status: 'success', message: 'Created', justAdded });
+    })
+    .catch(() => {
+      res.status(500).json({ status: 'failed', message: 'Problem creating question' });
+    });
+});
 
 
 export default router;
