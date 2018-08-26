@@ -2,19 +2,20 @@ import bcrypt from 'bcrypt';
 import pool from './dbConnect';
 
 class User {
-  constructor(username, firstName, lastName, email, password) {
+  constructor(username, firstName, lastName, email, password, descriptions) {
     this.username = username;
     this.pool = pool;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
+    this.descriptions = descriptions;
   }
 
   askSignup() {
     const hash = bcrypt.hashSync(this.password, 10);
     const query = {
-      text: 'INSERT INTO ask_user(username, first_name, last_name, email, hashed_password) VALUES($1, $2, $3, $4, $5) RETURNING id',
+      text: 'INSERT INTO ask_users(username, first_name, last_name, email, hashed_password) VALUES($1, $2, $3, $4, $5) RETURNING id',
       values: [this.username, this.firstName, this.lastName, this.email, hash],
     };
     return this.pool.query(query)
@@ -28,7 +29,7 @@ class User {
 
   askLogin() {
     const query = {
-      text: 'SELECT * FROM ask_user WHERE email = $1',
+      text: 'SELECT * FROM ask_users WHERE email = $1',
       values: [this.email],
     };
 
@@ -52,7 +53,7 @@ class User {
     this.lastName = input.lastName;
     this.email = input.email;
     this.password = input.password;
-    return this.pool.query('SELECT * FROM ask_user WHERE email = $1', [input.email])
+    return this.pool.query('SELECT * FROM ask_users WHERE email = $1', [input.email])
       .then((result) => {
         if (result.rows[0]) {
           return result.rows[0];
@@ -62,14 +63,12 @@ class User {
       .catch(err => err);
   }
 
-  getUser() {
-    const id = this.userId;
+  getUser(userId) {
     return this.pool.query(
       `SELECT username, 
-      first_name, 
-      last_name, 
-      email FROM ask_user
-      WHERE id = $1`, [id],
+      first_name,last_name, 
+      descriptions FROM ask_users
+      WHERE id = $1`, [userId],
     )
       .then((result) => {
         if (result.rows[0]) {
