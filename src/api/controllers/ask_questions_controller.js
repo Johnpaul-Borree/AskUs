@@ -8,13 +8,14 @@ verifyToken(router);
 const question = new Question();
 // GET ALL QUESTIONS
 router.get('/questions', (req, res) => {
+  const username = req.body.username;
   question.getAllQuestions()
     .then((result) => {
       if (!result) {
         throw new Error();
       }
       const questions = result.rows;
-      res.status(200).json({ status: 'success', questions });
+      res.status(200).json({ status: 'success', username, questions });
     })
     .catch(() => {
       res.status(500).json({ status: 'failed', message: 'Problem getting questions' });
@@ -51,5 +52,19 @@ router.post('/questions', (req, res) => {
     });
 });
 
+router.delete('/questions/:questionId', (req, res) => {
+  question.userId = req.body.userId;
+  question.deleteQuestion(req.params.questionId)
+    .then((result) => {
+      if (result.rowCount) {
+        res.status(200).json({ status: 'success', message: 'deleted successfully' });
+        return;
+      }
+      res.status(404).json({ status: 'failed', message: 'Entry not found' });
+    })
+    .catch(() => {
+      res.status(500).json({ status: 'failed', message: 'Something Went Wrong, cannot delete question' });
+    });
+});
 
 export default router;

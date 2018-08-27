@@ -24,7 +24,7 @@ class Question {
   // GET All MY questions
   getAllQuestions() {
     const query = {
-      text: 'SELECT * FROM ask_questions',
+      text: 'SELECT (ask_questions.id, first_name, last_name, username, description, created_at, question_body, answer_number)FROM ask_questions INNER JOIN ask_users ON ask_questions.user_id = ask_users.id',
     };
     return this.pool.query(query)
       .then(result => result)
