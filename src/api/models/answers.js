@@ -1,4 +1,4 @@
-import pool from './dbConnect';
+import pool from '../../dbScema/dbConnect';
 
 class Answers {
   constructor(userId, questionId, answerBody) {

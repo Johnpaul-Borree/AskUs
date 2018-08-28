@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import pool from './dbConnect';
+import pool from '../../dbScema/dbConnect';
 
 class User {
   constructor(username, firstName, lastName, email, password, descriptions) {
