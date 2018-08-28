@@ -12,7 +12,7 @@ class User {
     this.descriptions = descriptions;
   }
 
-  askSignup() {
+  signup() {
     const hash = bcrypt.hashSync(this.password, 10);
     const query = {
       text: 'INSERT INTO ask_users(username, first_name, last_name, email, hashed_password) VALUES($1, $2, $3, $4, $5) RETURNING id',
@@ -27,7 +27,7 @@ class User {
       .catch(() => { throw new Error(); });
   }
 
-  askLogin() {
+  login() {
     const query = {
       text: 'SELECT * FROM ask_users WHERE email = $1',
       values: [this.email],

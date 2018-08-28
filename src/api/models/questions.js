@@ -1,13 +1,11 @@
 import pool from './dbConnect';
-// import User from './ask_user';
 
 
 class Question {
-  constructor(questionBody, userId, createdAt) {
+  constructor(questionBody, userId) {
     this.pool = pool;
     this.questionBody = questionBody;
     this.userId = userId;
-    this.createdAt = createdAt;
     this.answerNumber = 0;
   }
 
@@ -22,7 +20,7 @@ class Question {
   }
 
   // GET All MY questions
-  getAllQuestions() {
+  fetchAllQuestions() {
     const query = {
       text: 'SELECT (ask_questions.id, first_name, last_name, username, description, created_at, question_body, answer_number)FROM ask_questions INNER JOIN ask_users ON ask_questions.user_id = ask_users.id',
     };

@@ -1,6 +1,6 @@
 import express from 'express';
 import verifyToken from '../../middleware/authorize';
-import Question from '../models/ask_questions';
+import Question from '../models/questions';
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ const question = new Question();
 // GET ALL QUESTIONS
 router.get('/questions', (req, res) => {
   const username = req.body.username;
-  question.getAllQuestions()
+  question.fetchAllQuestions()
     .then((result) => {
       if (!result) {
         throw new Error();
@@ -44,7 +44,7 @@ router.post('/questions', (req, res) => {
     .then((result) => {
       console.log(req.body.userId);
       const justAdded = result.rows[0];
-      justAdded.created_At = new Date(justAdded.created_At).toDateString();
+      justAdded.created_at = new Date(justAdded.created_at).toDateString();
       res.status(200).json({ status: 'success', message: 'Created', justAdded });
     })
     .catch(() => {
