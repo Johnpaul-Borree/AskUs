@@ -42,7 +42,6 @@ router.post('/questions', (req, res) => {
     questionBody: req.body.questionBody,
   })
     .then((result) => {
-      console.log(req.body.userId);
       const justAdded = result.rows[0];
       justAdded.created_at = new Date(justAdded.created_at).toDateString();
       res.status(200).json({ status: 'success', message: 'Created', justAdded });
