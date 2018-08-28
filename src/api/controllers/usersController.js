@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import validator from '../../validations/validator';
-import User from '../models/ask_user';
+import User from '../models/users';
 
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.post('/signup', validator.singUp, (req, res) => {
     user.checkUserExistBefore(req.body)
       .then((emailExists) => {
         if (!emailExists) { // Email doesn't exist so signup user;
-          user.askSignup()
+          user.signup()
             .then((userId) => {
               console.log(userId);
               const payload = { userId };
@@ -48,7 +48,7 @@ router.post('/login', validator.login, (req, res) => {
     const user = new User();
     user.email = req.body.email;
     user.password = req.body.password;
-    user.askLogin()
+    user.login()
       .then((result) => {
         switch (result.code) {
           case 2:

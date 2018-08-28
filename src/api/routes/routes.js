@@ -1,9 +1,11 @@
-import userControllers from '../controllers/ask_user_controller';
-import questionControllers from '../controllers/ask_questions_controller';
+import userControllers from '../controllers/usersController';
+import questionControllers from '../controllers/questionsController';
+import answerControllers from '../controllers/answersController';
 
-const routeMiddleware = (app) => {
+const router = (app) => {
   app.use('/auth', userControllers);
   app.use('/', questionControllers);
+  app.use('/', answerControllers);
 };
 
-export default routeMiddleware;
+export default router;
