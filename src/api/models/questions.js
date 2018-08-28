@@ -43,7 +43,8 @@ class Question {
         return false;
       })
       .catch(err => err);
-  }  
+  }
+
   getAnyQuestion(questionId) {
     const query = {
       text: `SELECT ask_answers.id, 
