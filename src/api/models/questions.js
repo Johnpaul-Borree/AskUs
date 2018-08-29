@@ -47,19 +47,31 @@ class Question {
 
   getAnyQuestion(questionId) {
     const query = {
-      text: `SELECT ask_answers.id, 
-            ask_answers.user_id, first_name, 
-            last_name, username, description, 
-            question_id, question_body, 
-            ask_questions.created_at, 
-            ask_questions.answer_number, 
-            ask_answers.created_at, 
-            answer_body, upvotes, 
-            downvotes, upvotes_number, 
-            downvotes_number, prefered_answer
-            FROM public.ask_answers inner join ask_questions on question_id = ask_questions.id inner join ask_users on ask_answers.user_id = ask_users.id where question_id = $1;`,
+      text: `SELECT 
+            (ask_questions.id, 
+              first_name, last_name, 
+              username, description, 
+              created_at, question_body, 
+              answer_number
+            )FROM ask_questions 
+            INNER JOIN ask_users 
+            ON ask_questions.user_id = ask_users.id WHERE question_id = $1`,
+
       values: [questionId],
     };
+
+    // const query2 = {
+    //   text: `SELECT 
+    //         (ask_answers.id, 
+    //           first_name, last_name, 
+    //           username, description, 
+    //           created_at, answer_body, 
+    //         )FROM ask_questions 
+    //         INNER JOIN ask_users 
+    //         ON ask_questions.user_id = ask_users.id WHERE question_id = $1`,
+
+    //   values: [questionId],
+    // };
     return this.pool.query(query)
       .then((result) => {
         if (result.rows) {
