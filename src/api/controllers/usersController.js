@@ -1,6 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import validator from '../../validations/validator';
+import validator from '../../middleware/validations/validator';
 import User from '../models/users';
 
 
@@ -17,7 +17,6 @@ router.post('/signup', validator.singUp, (req, res) => {
         if (!emailExists) { // Email doesn't exist so signup user;
           user.signup()
             .then((userId) => {
-              console.log(userId);
               const payload = { userId };
               const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1hr' });
               res.status(200).json(
@@ -70,6 +69,21 @@ router.post('/login', validator.login, (req, res) => {
   } else {
     res.status(400).json({ status: 'failed', message: errors.array()[0].msg });
   }
+});
+
+// Update account
+router.put('/users/:userId', (req, res) => {
+  const user = new User();
+  user.updateUser(req.params.userId)
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({ status: 'failed', message: 'There is no user with the given id' });
+      }
+      return res.status(200).json({ status: 'success', message: 'account updated successfully', result });
+    })
+    .catch(() => {
+      res.status(500).json({ status: 'failed', message: 'internal server error' });
+    });
 });
 
 export default router;

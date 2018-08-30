@@ -38,7 +38,7 @@ describe('Questions', () => {
         token: tokenObject.token,
         questionBody: 'What is a RESTFUL API?',
       };
-      chai.request(server)
+      chai.request(router)
         .post('/questions')
         .send(question)
         .end((err, req) => {
@@ -103,7 +103,7 @@ describe('Questions', () => {
   });
 
   describe('GEt /questions/:questionId', () => {
-    it('Should not get an entry with id not equall to question id', (done) => {
+    it('Should not get a question with id not equall to question id', (done) => {
       const id = 300;
       chai.request(router)
         .get(`/api/questions/${RequestId}`)

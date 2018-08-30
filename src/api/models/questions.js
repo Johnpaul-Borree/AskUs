@@ -46,19 +46,18 @@ class Question {
   }
 
   getAnyQuestion(questionId) {
-    const query1 = {
-      text: `SELECT 
-            (ask_questions.id, 
-              first_name, last_name, 
-              username, description, 
-              created_at, question_body, 
-              answer_number
-            )FROM ask_questions 
-            INNER JOIN ask_users 
-            ON ask_questions.user_id = ask_users.id WHERE question_id = $1`,
-
-      values: [questionId],
-    };
+  //   const query1 = {
+  //     text: `SELECT 
+  //           (ask_questions.id, 
+  //             first_name, last_name, 
+  //             username, description, 
+  //             created_at, question_body, 
+  //             answer_number
+  //           )FROM ask_questions 
+  //           INNER JOIN ask_users 
+  //           ON ask_questions.user_id = ask_users.id WHERE ask_questions.id = $1`,
+  //     values: [questionId],
+  //   };
 
     const query2 = {
       text: `SELECT 
@@ -67,24 +66,21 @@ class Question {
               username, description, 
               created_at, answer_body,
               prefered_answer, updated_at 
-            )FROM ask_questions 
+            )FROM ask_answers 
             INNER JOIN ask_users 
-            ON ask_answers.user_id = ask_users.id WHERE question_id = $1`,
+            ON ask_answers.user_id = ask_users.id WHERE ask_answers.question_id = $1`,
 
       values: [questionId],
     };
 
-    return this.pool.query(query1)
-      .then(() => this.pool.query(query2))
+    return this.pool.query(query2)
+      .then((result) => {
+        if (result.rows) {
+          return result.rows;
+        }
+        return false;
+      })
       .catch(err => err);
-    // this.pool.query(query1)
-    //   .then((result) => {
-    //     if (result.rows[0]) {
-    //       const question = result.rows;
-    //     }
-    //     return false;
-    //   })
-    //   .catch(err => err);
   }
 
   deleteQuestion(questionId) {
