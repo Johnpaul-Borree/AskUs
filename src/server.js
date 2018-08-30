@@ -10,9 +10,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('json spaces', 40);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to ASKus');
+});
 
 routeMiddleware(app);
 
+console.log(process.env.DB_CONNECTION_URL);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
