@@ -23,6 +23,7 @@ class User {
         const userId = result.rows[0].id;
         // wrong input
         if (!userId) throw new Error();
+        return userId;
       })
       .catch(() => { throw new Error(); });
   }
