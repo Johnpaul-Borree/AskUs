@@ -62,40 +62,5 @@ class User {
       })
       .catch(err => err);
   }
-
-  getUser(userId) {
-    return this.pool.query(
-      `SELECT username, 
-      first_name,last_name, 
-      descriptions FROM ask_users
-      WHERE id = $1`, [userId],
-    )
-      .then((result) => {
-        if (result.rows[0]) {
-          return result.rows[0];
-        }
-        return false;
-      })
-      .catch(err => err);
-  }
-
-  updateUser(userid) {
-    const query = {
-      text: `UPDATE ask_users,
-            SET first_name = $1,
-            last_name =$2, descripton = $3 
-            WHERE id =$4 RETURNING *`,
-
-      values: [this.firstName, this.lastName, this.descriptions, userid],
-    };
-    return this.pool.query(query)
-      .then((result) => {
-        if (result.rows[0]) {
-          return result.rows[0];
-        }
-        return false;
-      })
-      .catch(err => err);
-  }
 }
 export default User;

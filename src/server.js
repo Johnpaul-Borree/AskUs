@@ -16,11 +16,8 @@ app.get('/', (req, res) => {
 
 routeMiddleware(app);
 
-console.log(process.env.DB_CONNECTION_URL);
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+app.listen(port);
 
 export default app;

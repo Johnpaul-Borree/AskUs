@@ -71,19 +71,4 @@ router.post('/login', validator.login, (req, res) => {
   }
 });
 
-// Update account
-router.put('/users/:userId', (req, res) => {
-  const user = new User();
-  user.updateUser(req.params.userId)
-    .then((result) => {
-      if (!result) {
-        return res.status(404).json({ status: 'failed', message: 'There is no user with the given id' });
-      }
-      return res.status(200).json({ status: 'success', message: 'account updated successfully', result });
-    })
-    .catch(() => {
-      res.status(500).json({ status: 'failed', message: 'internal server error' });
-    });
-});
-
 export default router;
