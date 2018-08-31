@@ -1,1 +1,0 @@
-web: npm run dbmigration && babel-node src/server

@@ -1,6 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import validator from '../../validations/validator';
+import validator from '../../middleware/validations/validator';
 import User from '../models/users';
 
 
@@ -9,7 +9,6 @@ const router = express.Router();
 // signup route
 router.post('/signup', validator.singUp, (req, res) => {
   const errors = validator.validationResult(req);
-
   if (errors.isEmpty()) {
     const user = new User();
     user.checkUserExistBefore(req.body)
@@ -17,9 +16,8 @@ router.post('/signup', validator.singUp, (req, res) => {
         if (!emailExists) { // Email doesn't exist so signup user;
           user.signup()
             .then((userId) => {
-              console.log(userId);
               const payload = { userId };
-              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1hr' });
+              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5hr' });
               res.status(200).json(
                 {
                   status: 'success',

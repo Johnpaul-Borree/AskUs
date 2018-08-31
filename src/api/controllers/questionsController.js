@@ -4,7 +4,6 @@ import Question from '../models/questions';
 
 const router = express.Router();
 
-verifyToken(router);
 const question = new Question();
 // GET ALL QUESTIONS
 router.get('/questions', (req, res) => {
@@ -25,16 +24,18 @@ router.get('/questions', (req, res) => {
 router.get('/questions/:questionId', (req, res) => {
   question.getAnyQuestion(req.params.questionId)
     .then((singleQuestion) => {
-      if (singleQuestion) {
-        res.status(200).json({ singleQuestion, status: 'success', message: 'returned one question' });
+      if (singleQuestion.Question.length <= 0) {
+        res.status(404).json({ status: 'success', message: 'no result found' });
         return;
       }
-      res.status(404).json({ status: 'success', message: 'no result found' });
+      res.status(200).json({ singleQuestion, status: 'success', message: 'returned one question' });
     })
     .catch(() => {
       res.status(500).json({ status: 'failed', message: 'cannot get question' });
     });
 });
+
+verifyToken(router);
 
 router.post('/questions', (req, res) => {
   question.postQuestion({
@@ -42,7 +43,7 @@ router.post('/questions', (req, res) => {
     questionBody: req.body.questionBody,
   })
     .then((result) => {
-      console.log(req.body.userId);
+      if (result.rows.length <= 0) return res.status(404).json({ status: 200, message: 'Enter Correct question content' });
       const justAdded = result.rows[0];
       justAdded.created_at = new Date(justAdded.created_at).toDateString();
       res.status(200).json({ status: 'success', message: 'Created', justAdded });
@@ -53,14 +54,13 @@ router.post('/questions', (req, res) => {
 });
 
 router.delete('/questions/:questionId', (req, res) => {
-  question.userId = req.body.userId;
-  question.deleteQuestion(req.params.questionId)
+  question.deleteQuestion(req.body.userId, req.params.questionId)
     .then((result) => {
-      if (result.rowCount) {
+      if (result.question.rowCount) {
         res.status(200).json({ status: 'success', message: 'deleted successfully' });
         return;
       }
-      res.status(404).json({ status: 'failed', message: 'Entry not found' });
+      res.status(404).json({ status: 'failed', message: 'The question with the given id was not found' });
     })
     .catch(() => {
       res.status(500).json({ status: 'failed', message: 'Something Went Wrong, cannot delete question' });

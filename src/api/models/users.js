@@ -23,6 +23,7 @@ class User {
         const userId = result.rows[0].id;
         // wrong input
         if (!userId) throw new Error();
+        return userId;
       })
       .catch(() => { throw new Error(); });
   }
@@ -54,22 +55,6 @@ class User {
     this.email = input.email;
     this.password = input.password;
     return this.pool.query('SELECT * FROM ask_users WHERE email = $1', [input.email])
-      .then((result) => {
-        if (result.rows[0]) {
-          return result.rows[0];
-        }
-        return false;
-      })
-      .catch(err => err);
-  }
-
-  getUser(userId) {
-    return this.pool.query(
-      `SELECT username, 
-      first_name,last_name, 
-      descriptions FROM ask_users
-      WHERE id = $1`, [userId],
-    )
       .then((result) => {
         if (result.rows[0]) {
           return result.rows[0];

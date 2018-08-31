@@ -46,27 +46,62 @@ class Question {
   }
 
   getAnyQuestion(questionId) {
-    const query = {
-      text: 'SELECT * FROM ask_questions WHERE id = $1',
+    const query1 = {
+      text: `SELECT 
+            (ask_questions.id, 
+              first_name, last_name, 
+              username, description, 
+              created_at, question_body, 
+              answer_number
+            )FROM ask_questions 
+            INNER JOIN ask_users 
+            ON ask_questions.user_id = ask_users.id WHERE ask_questions.id = $1`,
       values: [questionId],
     };
-    return this.pool.query(query)
-      .then((result) => {
-        if (result.rows[0]) {
-          return result.rows[0];
-        }
-        return false;
+
+    const query2 = {
+      text: `SELECT 
+            (ask_answers.id, 
+              first_name, last_name, 
+              username, description, 
+              created_at, answer_body,
+              prefered_answer, updated_at 
+            )FROM ask_answers 
+            INNER JOIN ask_users 
+            ON ask_answers.user_id = ask_users.id WHERE ask_answers.question_id = $1`,
+
+      values: [questionId],
+    };
+
+    return this.pool.query(query1)
+      .then((question) => {
+        return this.pool.query(query2)
+          .then((answers) => {
+            const response = { Question: question.rows, Answers: answers.rows };
+            return response;
+          });
       })
       .catch(err => err);
   }
 
-  deleteQuestion(questionId) {
-    const query = {
+  deleteQuestion(userId, questionId) {
+    const query1 = {
       text: 'DELETE FROM ask_questions WHERE user_id = $1 and id = $2',
-      values: [this.userId, questionId],
+      values: [userId, questionId],
     };
-    return this.pool.query(query)
-      .then(result => result)
+    const query2 = {
+      text: 'DELETE FROM ask_answers WHERE question_id =$1',
+      values: [questionId],
+    };
+
+    return this.pool.query(query1)
+      .then((question) => {
+        return this.pool.query(query2)
+          .then((answers) => {
+            const response = { question, answers };
+            return response;
+          });
+      })
       .catch(err => err);
   }
 }
