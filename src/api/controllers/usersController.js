@@ -9,7 +9,6 @@ const router = express.Router();
 // signup route
 router.post('/signup', validator.singUp, (req, res) => {
   const errors = validator.validationResult(req);
-
   if (errors.isEmpty()) {
     const user = new User();
     user.checkUserExistBefore(req.body)
@@ -18,7 +17,7 @@ router.post('/signup', validator.singUp, (req, res) => {
           user.signup()
             .then((userId) => {
               const payload = { userId };
-              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1hr' });
+              const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5hr' });
               res.status(200).json(
                 {
                   status: 'success',

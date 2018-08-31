@@ -11,14 +11,15 @@ chai.use(chaiHttp);
 
 describe('Questions', () => {
   const tokenObject = {};
+  const lastCreatedQuest = {};
 
   before((done) => {
     const user = {
-      email: 'udoka@gmail.com',
+      email: 'testpass@gmail.com',
       password: 'mypassword345',
     };
     chai.request(router)
-      .post('/auth/login')
+      .post('/api/v1/auth/login')
       .send(user)
       .end((err, res) => {
         tokenObject.token = res.body.token;
@@ -39,36 +40,19 @@ describe('Questions', () => {
         questionBody: 'What is a RESTFUL API?',
       };
       chai.request(router)
-        .post('/questions')
+        .post('/api/v1/questions')
         .send(question)
-        .end((err, req) => {
-          req.should.have.status(200);
-          req.body.should.be.a('object');
-          req.body.should.have.property('justAdded').be.a('object');
-          req.body.justAdded.should.have.property('created_at').not.eql('');
-          req.body.createdEntry.should.have.property('id').be.a('number');
-          req.body.should.have.property('message').eql('Created');
+        .end((err, res) => {
+          lastCreatedQuest.id = res.body.justAdded.id;
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('justAdded').be.a('object');
+          res.body.justAdded.should.have.property('created_at').not.eql('');
+          res.body.should.have.property('message').eql('Created');
           done(err);
         });
     });
-
-
-    it('Should not create entry when questionBody field is missing', (done) => {
-      // No question was entered so, cannot create empty questions
-      const question = {
-        token: tokenObject.token,
-        questionBody: '',
-      };
-      chai.request(router)
-        .post('/questions')
-        .send(question)
-        .end((err, req) => {
-          req.should.have.status(400);
-          req.body.should.be.a('object');
-          done(err);
-        });
-    });
-
+    
     it("Should not create a question when token didn't match", (done) => {
       // cannot create question, token didi not match
       const question = {
@@ -76,12 +60,12 @@ describe('Questions', () => {
         questionBody: 'How to use css3 frameworks',
       };
       chai.request(router)
-        .post('/questions')
+        .post('/api/v1/questions')
         .send(question)
         .end((err, req) => {
           req.should.have.status(401);
           req.body.should.be.a('object');
-          req.body.should.have.property('message').eql('Error authentication failed');
+          req.body.should.have.property('message').eql('Failed to authenticate');
           done(err);
         });
     });
@@ -90,12 +74,12 @@ describe('Questions', () => {
   describe('GET /questions', () => {
     it('Should list all questions on /questions', (done) => {
       chai.request(router)
-        .get('/questions')
+        .get('/api/v1/questions')
         .send({ token: tokenObject.token })
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
-          res.body.should.have.property('questions').be.a('object');
+          res.body.should.have.property('questions').be.a('array');
           res.body.should.have.property('status').eql('success');
           done();
         });
@@ -104,21 +88,22 @@ describe('Questions', () => {
 
   describe('GEt /questions/:questionId', () => {
     it('Should not get a question with id not equall to question id', (done) => {
-      const id = 300;
+      const questionId = 300;
       chai.request(router)
-        .get(`/api/questions/${RequestId}`)
+        .get(`/api/v1/questions/${questionId}`)
         .send({ token: tokenObject.token })
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.should.property('message').eql('Question withthe given id was not found');
+          res.body.should.property('message').eql('no result found');
           done();
         });
     });
 
     it('Should get a single question /questions/:questionId status code 200', (done) => {
-      const id = 1;
+      console.log(lastCreatedQuest.id);
+      const questionId = lastCreatedQuest.id;
       chai.request(router)
-        .get(`/questions/${questionId}`)
+        .get(`/api/v1/questions/${questionId}`)
         .send({ token: tokenObject.token })
         .end((err, res) => {
           res.should.have.status(200);
@@ -128,25 +113,45 @@ describe('Questions', () => {
         });
     });
   });
+  describe('POST /questions/questionId/answers', () => {
 
+    it("Should not create a answer when token didn't match", (done) => {
+      // cannot create question, token did not match
+      const questionId = lastCreatedQuest.id;
+      const answer = {
+        token: '56hhhi88090990-09jjhbbbtggbll*nbkj',
+        answerBody: 'My answers here',
+      };
+      chai.request(router)
+        .post(`/api/v1/questions/${questionId}/answers`)
+        .send(answer)
+        .end((err, req) => {
+          req.should.have.status(401);
+          req.body.should.be.a('object');
+          req.body.should.have.property('message').eql('Failed to authenticate');
+          done(err);
+        });
+    });
+  });
+  
   describe('DELETE /questions/:questionId', () => {
     it('Should not delete an entry returns status code 404', (done) => {
-      const id = 20;
+      const questionId = 100;
       chai.request(router)
-        .delete(`/questions/${questionId}`)
+        .delete(`/api/v1/questions/${questionId}`)
         .send({ token: tokenObject.token })
         .end((err, req) => {
           req.should.have.status(404);
           req.body.should.be.a('object');
-          req.body.should.have.property('message').eql('Entry not found');
+          req.body.should.have.property('message').eql('The question with the given id was not found');
           done(err);
         });
     });
 
     it('Should delete a question and return status code 200', (done) => {
-      const questionId = 1;
+      const questionId = lastCreatedQuest.id;
       chai.request(router)
-        .delete(`/questions/${questionId}`)
+        .delete(`/api/v1/questions/${questionId}`)
         .send({ token: tokenObject.token })
         .end((err, req) => {
           req.should.have.status(200);

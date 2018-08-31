@@ -7,7 +7,7 @@
     "start": "npm run migrate && babel-node src/server",
     "start_dev": "nodemon --require babel-register src/server",
     "migrate": "node --require babel-register src/dbScema/createTable",
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-register test/* --exit",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-register test/* --timeout=6000 --exit",
     "coveralls": "npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls"
   },
   "keywords": [
